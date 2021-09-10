@@ -1,2 +1,9 @@
-<h1>{{title}} 🚀</h1>
-<p>Welcome Ironhacker!</p>
+<h1>All Rooms</h1>
+{{#each roomList}}
+  <h3>Name: {{name}}</h3>
+  <h3>Price: {{price}}</h3>
+  <a href="/rooms/{{_id}}/delete">Delete this Room 🗑</a>
+{{/each}}
+
+<a href="/signup">Sign up ✅</a><br>
+<a href="/login">Log in</a>
