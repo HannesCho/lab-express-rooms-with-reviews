@@ -18,17 +18,16 @@ router.post('/login', passport.authenticate('local', {
 }));
 
 router.post('/signup', (req, res, next) => {
-	console.log(req.body);
 	const { username, password } = req.body;
-	if (password.length < 5) {
-		res.render('signup', { message: 'Your password has to be 8 chars min' });
+	if (password.length < 3) {
+		res.render('signup', { message: 'Your password has to be 2 chars min' });
 		return;
 	}
 	if (username.length === 0) {
 		res.render('signup', { message: 'Your username cannot be empty' });
 		return;
 	}
-	User.findOne({ username: username })
+	User.findOne({ fullName: username })
 		.then(userFromDB => {
 			if (userFromDB !== null) {
 				res.render('signup', { message: 'This username is already taken' });
